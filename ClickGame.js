@@ -132,7 +132,33 @@ function settingsChange(e)
         }
 }
 
+function backgroundColor()
+{
+    colorindex++;
+    if(colorindex >= colorArray.length)
+    {
+        colorindex=0
+    }
+    body = document.querySelector("body");
+    body.style.backgroundColor = colorArray[colorindex];
+    backgroundSetting.innerHTML = "background:"+colorArray[colorindex];
+
+}
+function textChange()
+{
+    textcolorindex++;
+    if(textcolorindex >= colorArray.length)
+    {
+        textcolorindex =0;
+    }
+    body = document.querySelector("body");
+    body.style.color = colorArray[textcolorindex];
+    textColor.innerHTML = "text:" + colorArray[textcolorindex];
+
+}
 //all timer info and such
+//could use jquery to make it need less variables
+var colorArray = ["white","black","blue","red","yellow","green"];
 var gameEnder = "";
 var gametime = 0;
 var gameTimer = document.getElementById("timer");
@@ -140,6 +166,8 @@ var apparentTimer = 0;
 var timer = 0;
 var minutetimer = 0;
 var hourtimer = 0;
+var colorindex = 0;
+var textcolorindex =1;
 var playerOnesScore = document.getElementById("playerOneScore");
 var playerTwoScore = document.getElementById("playerTwoScore");
 var playerLead = document.getElementById("playerLead");
@@ -148,6 +176,8 @@ var p1ScoreButton = document.getElementById("pOneButton");
 var p2ScoreButton = document.getElementById("pTwoButton");
 var mouseSetting = document.getElementById("settingsMouse");
 var keyboardSetting = document.getElementById("settingsKeyboard");
+var backgroundSetting = document.getElementById("backgroundColor");
+var textColor = document.getElementById("textButton");
 
 //event listeners
 startButton.addEventListener("click",gameRun);
@@ -155,3 +185,5 @@ p1ScoreButton.addEventListener("click",scoreforP1);
 p2ScoreButton.addEventListener("click",scoreforP2);
 mouseSetting.addEventListener("click", settingsChange);
 keyboardSetting.addEventListener("click",settingsChange);
+backgroundSetting.addEventListener("click",backgroundColor);
+textColor.addEventListener("click",textChange);
